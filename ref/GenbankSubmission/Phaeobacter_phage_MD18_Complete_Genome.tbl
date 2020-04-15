@@ -1,0 +1,1021 @@
+>Feature Phaeobacter_phage_MD18_Complete_Genome
+561	145	CDS
+			db_xref	SEED:fig|6666666.555688.peg.1
+			product	hypothetical protein
+			transl_table	11
+1040	561	CDS
+			db_xref	SEED:fig|6666666.555688.peg.2
+			product	hypothetical protein
+			transl_table	11
+1420	1040	CDS
+			db_xref	SEED:fig|6666666.555688.peg.3
+			product	hypothetical protein
+			transl_table	11
+1938	1420	CDS
+			db_xref	SEED:fig|6666666.555688.peg.4
+			product	hypothetical protein
+			transl_table	11
+2803	1949	CDS
+			db_xref	SEED:fig|6666666.555688.peg.5
+			product	Phosphate starvation-inducible protein PhoH, predicted ATPase
+			db_xref	GO:0005524
+			transl_table	11
+			db_xref	GO:0003676
+			db_xref	GO:0016036
+2903	3016	CDS
+			db_xref	SEED:fig|6666666.555688.peg.6
+			product	hypothetical protein
+			transl_table	11
+3483	3082	CDS
+			db_xref	SEED:fig|6666666.555688.peg.7
+			product	hypothetical protein
+			transl_table	11
+3710	3504	CDS
+			db_xref	SEED:fig|6666666.555688.peg.8
+			product	hypothetical protein
+			transl_table	11
+3963	4628	CDS
+			db_xref	SEED:fig|6666666.555688.peg.9
+			product	hypothetical protein
+			transl_table	11
+5114	4659	CDS
+			db_xref	SEED:fig|6666666.555688.peg.10
+			product	hypothetical protein
+			transl_table	11
+5614	5186	CDS
+			db_xref	SEED:fig|6666666.555688.peg.11
+			product	hypothetical protein
+			transl_table	11
+6605	5679	CDS
+			db_xref	SEED:fig|6666666.555688.peg.12
+			product	hypothetical protein
+			transl_table	11
+7608	6802	CDS
+			db_xref	SEED:fig|6666666.555688.peg.13
+			product	hypothetical protein
+			transl_table	11
+8307	8041	CDS
+			db_xref	SEED:fig|6666666.555688.peg.14
+			product	hypothetical protein
+			transl_table	11
+9983	8307	CDS
+			db_xref	SEED:fig|6666666.555688.peg.15
+			product	hypothetical protein
+			transl_table	11
+10368	10066	CDS
+			db_xref	SEED:fig|6666666.555688.peg.16
+			product	hypothetical protein
+			transl_table	11
+11390	10905	CDS
+			db_xref	SEED:fig|6666666.555688.peg.17
+			product	hypothetical protein
+			transl_table	11
+11856	11407	CDS
+			db_xref	SEED:fig|6666666.555688.peg.18
+			product	hypothetical protein
+			transl_table	11
+12146	11943	CDS
+			db_xref	SEED:fig|6666666.555688.peg.19
+			product	hypothetical protein
+			transl_table	11
+13777	13016	CDS
+			db_xref	SEED:fig|6666666.555688.peg.20
+			product	hypothetical protein
+			transl_table	11
+14070	13777	CDS
+			db_xref	SEED:fig|6666666.555688.peg.21
+			product	hypothetical protein
+			transl_table	11
+15364	14942	CDS
+			db_xref	SEED:fig|6666666.555688.peg.22
+			product	hypothetical protein
+			transl_table	11
+15731	15357	CDS
+			db_xref	SEED:fig|6666666.555688.peg.23
+			product	hypothetical protein
+			transl_table	11
+16503	16162	CDS
+			db_xref	SEED:fig|6666666.555688.peg.24
+			product	hypothetical protein
+			transl_table	11
+16586	16735	CDS
+			db_xref	SEED:fig|6666666.555688.peg.25
+			product	hypothetical protein
+			transl_table	11
+18095	17469	CDS
+			db_xref	SEED:fig|6666666.555688.peg.26
+			product	hypothetical protein
+			transl_table	11
+19060	18095	CDS
+			db_xref	SEED:fig|6666666.555688.peg.27
+			product	hypothetical protein
+			transl_table	11
+19428	19057	CDS
+			db_xref	SEED:fig|6666666.555688.peg.28
+			product	hypothetical protein
+			transl_table	11
+21051	20062	CDS
+			db_xref	SEED:fig|6666666.555688.peg.29
+			product	hypothetical protein
+			transl_table	11
+22146	22331	CDS
+			db_xref	SEED:fig|6666666.555688.peg.30
+			product	hypothetical protein
+			transl_table	11
+24128	23979	CDS
+			db_xref	SEED:fig|6666666.555688.peg.31
+			product	hypothetical protein
+			transl_table	11
+25914	25750	CDS
+			db_xref	SEED:fig|6666666.555688.peg.32
+			product	hypothetical protein
+			transl_table	11
+26703	26407	CDS
+			db_xref	SEED:fig|6666666.555688.peg.33
+			product	hypothetical protein
+			transl_table	11
+27130	26927	CDS
+			db_xref	SEED:fig|6666666.555688.peg.34
+			product	hypothetical protein
+			transl_table	11
+27533	27261	CDS
+			db_xref	SEED:fig|6666666.555688.peg.35
+			product	hypothetical protein
+			transl_table	11
+28048	27722	CDS
+			db_xref	SEED:fig|6666666.555688.peg.36
+			product	hypothetical protein
+			transl_table	11
+28354	28127	CDS
+			db_xref	SEED:fig|6666666.555688.peg.37
+			product	hypothetical protein
+			transl_table	11
+28527	28354	CDS
+			db_xref	SEED:fig|6666666.555688.peg.38
+			product	hypothetical protein
+			transl_table	11
+29120	28719	CDS
+			db_xref	SEED:fig|6666666.555688.peg.39
+			product	hypothetical protein
+			transl_table	11
+29257	29120	CDS
+			db_xref	SEED:fig|6666666.555688.peg.40
+			product	hypothetical protein
+			transl_table	11
+29637	29380	CDS
+			db_xref	SEED:fig|6666666.555688.peg.41
+			product	hypothetical protein
+			transl_table	11
+30262	29726	CDS
+			db_xref	SEED:fig|6666666.555688.peg.42
+			product	hypothetical protein
+			transl_table	11
+30673	30323	CDS
+			db_xref	SEED:fig|6666666.555688.peg.43
+			product	hypothetical protein
+			transl_table	11
+31248	30763	CDS
+			db_xref	SEED:fig|6666666.555688.peg.44
+			product	hypothetical protein
+			transl_table	11
+31924	31490	CDS
+			db_xref	SEED:fig|6666666.555688.peg.45
+			product	hypothetical protein
+			transl_table	11
+32737	32045	CDS
+			db_xref	SEED:fig|6666666.555688.peg.46
+			product	hypothetical protein
+			transl_table	11
+33283	32990	CDS
+			db_xref	SEED:fig|6666666.555688.peg.47
+			product	hypothetical protein
+			transl_table	11
+33545	33351	CDS
+			db_xref	SEED:fig|6666666.555688.peg.48
+			product	hypothetical protein
+			transl_table	11
+33694	33545	CDS
+			db_xref	SEED:fig|6666666.555688.peg.49
+			product	hypothetical protein
+			transl_table	11
+34742	33996	CDS
+			db_xref	SEED:fig|6666666.555688.peg.50
+			product	hypothetical protein
+			transl_table	11
+34900	35091	CDS
+			db_xref	SEED:fig|6666666.555688.peg.51
+			product	hypothetical protein
+			transl_table	11
+35088	35291	CDS
+			db_xref	SEED:fig|6666666.555688.peg.52
+			product	hypothetical protein
+			transl_table	11
+36341	36000	CDS
+			db_xref	SEED:fig|6666666.555688.peg.53
+			product	hypothetical protein
+			transl_table	11
+36942	36619	CDS
+			db_xref	SEED:fig|6666666.555688.peg.54
+			product	hypothetical protein
+			transl_table	11
+37109	36945	CDS
+			db_xref	SEED:fig|6666666.555688.peg.55
+			product	hypothetical protein
+			transl_table	11
+38002	38400	CDS
+			db_xref	SEED:fig|6666666.555688.peg.56
+			product	hypothetical protein
+			transl_table	11
+38397	38654	CDS
+			db_xref	SEED:fig|6666666.555688.peg.57
+			product	hypothetical protein
+			transl_table	11
+38672	38842	CDS
+			db_xref	SEED:fig|6666666.555688.peg.58
+			product	hypothetical protein
+			transl_table	11
+38842	39150	CDS
+			db_xref	SEED:fig|6666666.555688.peg.59
+			product	hypothetical protein
+			transl_table	11
+39147	39305	CDS
+			db_xref	SEED:fig|6666666.555688.peg.60
+			product	hypothetical protein
+			transl_table	11
+39391	39567	CDS
+			db_xref	SEED:fig|6666666.555688.peg.61
+			product	hypothetical protein
+			transl_table	11
+39567	39833	CDS
+			db_xref	SEED:fig|6666666.555688.peg.62
+			product	hypothetical protein
+			transl_table	11
+39830	40042	CDS
+			db_xref	SEED:fig|6666666.555688.peg.63
+			product	hypothetical protein
+			transl_table	11
+40039	40446	CDS
+			db_xref	SEED:fig|6666666.555688.peg.64
+			product	hypothetical protein
+			transl_table	11
+42332	40638	CDS
+			db_xref	SEED:fig|6666666.555688.peg.65
+			product	hypothetical protein
+			transl_table	11
+42850	42329	CDS
+			db_xref	SEED:fig|6666666.555688.peg.66
+			product	hypothetical protein
+			transl_table	11
+43058	42837	CDS
+			db_xref	SEED:fig|6666666.555688.peg.67
+			product	hypothetical protein
+			transl_table	11
+43329	43075	CDS
+			db_xref	SEED:fig|6666666.555688.peg.68
+			product	hypothetical protein
+			transl_table	11
+43634	43338	CDS
+			db_xref	SEED:fig|6666666.555688.peg.69
+			product	hypothetical protein
+			transl_table	11
+44154	43612	CDS
+			db_xref	SEED:fig|6666666.555688.peg.70
+			product	hypothetical protein
+			transl_table	11
+44732	44151	CDS
+			db_xref	SEED:fig|6666666.555688.peg.71
+			product	hypothetical protein
+			transl_table	11
+45857	44865	CDS
+			db_xref	SEED:fig|6666666.555688.peg.72
+			product	hypothetical protein
+			transl_table	11
+46403	46092	CDS
+			db_xref	SEED:fig|6666666.555688.peg.73
+			product	hypothetical protein
+			transl_table	11
+46681	47742	CDS
+			db_xref	SEED:fig|6666666.555688.peg.74
+			product	hypothetical protein
+			transl_table	11
+47735	47848	CDS
+			db_xref	SEED:fig|6666666.555688.peg.75
+			product	hypothetical protein
+			transl_table	11
+47849	48073	CDS
+			db_xref	SEED:fig|6666666.555688.peg.76
+			product	hypothetical protein
+			transl_table	11
+48070	49008	CDS
+			db_xref	SEED:fig|6666666.555688.peg.77
+			product	hypothetical protein
+			transl_table	11
+49001	49204	CDS
+			db_xref	SEED:fig|6666666.555688.peg.78
+			product	hypothetical protein
+			transl_table	11
+49201	49554	CDS
+			db_xref	SEED:fig|6666666.555688.peg.79
+			product	hypothetical protein
+			transl_table	11
+49551	49766	CDS
+			db_xref	SEED:fig|6666666.555688.peg.80
+			product	hypothetical protein
+			transl_table	11
+49756	49953	CDS
+			db_xref	SEED:fig|6666666.555688.peg.81
+			product	hypothetical protein
+			transl_table	11
+49950	50351	CDS
+			db_xref	SEED:fig|6666666.555688.peg.82
+			product	hypothetical protein
+			transl_table	11
+50353	50661	CDS
+			db_xref	SEED:fig|6666666.555688.peg.83
+			product	hypothetical protein
+			transl_table	11
+50661	50903	CDS
+			db_xref	SEED:fig|6666666.555688.peg.84
+			product	hypothetical protein
+			transl_table	11
+50896	52890	CDS
+			db_xref	SEED:fig|6666666.555688.peg.85
+			product	hypothetical protein
+			transl_table	11
+52914	53315	CDS
+			db_xref	SEED:fig|6666666.555688.peg.86
+			product	hypothetical protein
+			transl_table	11
+53442	53684	CDS
+			db_xref	SEED:fig|6666666.555688.peg.87
+			product	hypothetical protein
+			transl_table	11
+53697	53915	CDS
+			db_xref	SEED:fig|6666666.555688.peg.88
+			product	hypothetical protein
+			transl_table	11
+53929	54456	CDS
+			db_xref	SEED:fig|6666666.555688.peg.89
+			product	hypothetical protein
+			transl_table	11
+54453	54956	CDS
+			db_xref	SEED:fig|6666666.555688.peg.90
+			product	hypothetical protein
+			transl_table	11
+54956	55279	CDS
+			db_xref	SEED:fig|6666666.555688.peg.91
+			product	hypothetical protein
+			transl_table	11
+55279	55404	CDS
+			db_xref	SEED:fig|6666666.555688.peg.92
+			product	hypothetical protein
+			transl_table	11
+55401	55649	CDS
+			db_xref	SEED:fig|6666666.555688.peg.93
+			product	hypothetical protein
+			transl_table	11
+55646	56014	CDS
+			db_xref	SEED:fig|6666666.555688.peg.94
+			product	hypothetical protein
+			transl_table	11
+56007	56318	CDS
+			db_xref	SEED:fig|6666666.555688.peg.95
+			product	hypothetical protein
+			transl_table	11
+56315	56482	CDS
+			db_xref	SEED:fig|6666666.555688.peg.96
+			product	hypothetical protein
+			transl_table	11
+56466	56876	CDS
+			db_xref	SEED:fig|6666666.555688.peg.97
+			product	hypothetical protein
+			transl_table	11
+56949	58004	CDS
+			db_xref	SEED:fig|6666666.555688.peg.98
+			product	hypothetical protein
+			transl_table	11
+58075	58281	CDS
+			db_xref	SEED:fig|6666666.555688.peg.99
+			product	hypothetical protein
+			transl_table	11
+58278	58616	CDS
+			db_xref	SEED:fig|6666666.555688.peg.100
+			product	hypothetical protein
+			transl_table	11
+58609	58755	CDS
+			db_xref	SEED:fig|6666666.555688.peg.101
+			product	hypothetical protein
+			transl_table	11
+58801	59181	CDS
+			db_xref	SEED:fig|6666666.555688.peg.102
+			product	hypothetical protein
+			transl_table	11
+59166	59432	CDS
+			db_xref	SEED:fig|6666666.555688.peg.103
+			product	hypothetical protein
+			transl_table	11
+59422	60282	CDS
+			db_xref	SEED:fig|6666666.555688.peg.104
+			product	hypothetical protein
+			transl_table	11
+60282	60749	CDS
+			db_xref	SEED:fig|6666666.555688.peg.105
+			product	hypothetical protein
+			transl_table	11
+61094	61387	CDS
+			db_xref	SEED:fig|6666666.555688.peg.106
+			product	hypothetical protein
+			transl_table	11
+61384	61926	CDS
+			db_xref	SEED:fig|6666666.555688.peg.107
+			product	hypothetical protein
+			transl_table	11
+61923	62114	CDS
+			db_xref	SEED:fig|6666666.555688.peg.108
+			product	hypothetical protein
+			transl_table	11
+62125	62340	CDS
+			db_xref	SEED:fig|6666666.555688.peg.109
+			product	hypothetical protein
+			transl_table	11
+62337	62570	CDS
+			db_xref	SEED:fig|6666666.555688.peg.110
+			product	hypothetical protein
+			transl_table	11
+62761	62958	CDS
+			db_xref	SEED:fig|6666666.555688.peg.111
+			product	hypothetical protein
+			transl_table	11
+62951	63127	CDS
+			db_xref	SEED:fig|6666666.555688.peg.112
+			product	hypothetical protein
+			transl_table	11
+63117	63935	CDS
+			db_xref	SEED:fig|6666666.555688.peg.113
+			product	hypothetical protein
+			transl_table	11
+63932	64096	CDS
+			db_xref	SEED:fig|6666666.555688.peg.114
+			product	hypothetical protein
+			transl_table	11
+64096	64566	CDS
+			db_xref	SEED:fig|6666666.555688.peg.115
+			product	hypothetical protein
+			transl_table	11
+64566	64781	CDS
+			db_xref	SEED:fig|6666666.555688.peg.116
+			product	hypothetical protein
+			transl_table	11
+64765	65127	CDS
+			db_xref	SEED:fig|6666666.555688.peg.117
+			product	hypothetical protein
+			transl_table	11
+65127	65336	CDS
+			db_xref	SEED:fig|6666666.555688.peg.118
+			product	hypothetical protein
+			transl_table	11
+65333	65584	CDS
+			db_xref	SEED:fig|6666666.555688.peg.119
+			product	hypothetical protein
+			transl_table	11
+65656	66489	CDS
+			db_xref	SEED:fig|6666666.555688.peg.120
+			product	hypothetical protein
+			transl_table	11
+66486	67052	CDS
+			db_xref	SEED:fig|6666666.555688.peg.121
+			product	hypothetical protein
+			transl_table	11
+67049	67321	CDS
+			db_xref	SEED:fig|6666666.555688.peg.122
+			product	hypothetical protein
+			transl_table	11
+67622	67771	CDS
+			db_xref	SEED:fig|6666666.555688.peg.123
+			product	hypothetical protein
+			transl_table	11
+67867	68100	CDS
+			db_xref	SEED:fig|6666666.555688.peg.124
+			product	hypothetical protein
+			transl_table	11
+68100	68519	CDS
+			db_xref	SEED:fig|6666666.555688.peg.125
+			product	hypothetical protein
+			transl_table	11
+68519	68755	CDS
+			db_xref	SEED:fig|6666666.555688.peg.126
+			product	hypothetical protein
+			transl_table	11
+68755	69117	CDS
+			db_xref	SEED:fig|6666666.555688.peg.127
+			product	hypothetical protein
+			transl_table	11
+69114	69299	CDS
+			db_xref	SEED:fig|6666666.555688.peg.128
+			product	hypothetical protein
+			transl_table	11
+69296	69526	CDS
+			db_xref	SEED:fig|6666666.555688.peg.129
+			product	hypothetical protein
+			transl_table	11
+69612	69866	CDS
+			db_xref	SEED:fig|6666666.555688.peg.130
+			product	hypothetical protein
+			transl_table	11
+69866	70504	CDS
+			db_xref	SEED:fig|6666666.555688.peg.131
+			product	hypothetical protein
+			transl_table	11
+70514	70720	CDS
+			db_xref	SEED:fig|6666666.555688.peg.132
+			product	hypothetical protein
+			transl_table	11
+70866	71054	CDS
+			db_xref	SEED:fig|6666666.555688.peg.133
+			product	hypothetical protein
+			transl_table	11
+71127	71447	CDS
+			db_xref	SEED:fig|6666666.555688.peg.134
+			product	hypothetical protein
+			transl_table	11
+71447	71767	CDS
+			db_xref	SEED:fig|6666666.555688.peg.135
+			product	hypothetical protein
+			transl_table	11
+71779	72168	CDS
+			db_xref	SEED:fig|6666666.555688.peg.136
+			product	hypothetical protein
+			transl_table	11
+72165	72353	CDS
+			db_xref	SEED:fig|6666666.555688.peg.137
+			product	hypothetical protein
+			transl_table	11
+72365	73552	CDS
+			db_xref	SEED:fig|6666666.555688.peg.138
+			product	CCA tRNA nucleotidyltransferase (EC 2.7.7.72)
+			EC_number	2.7.7.72
+			transl_table	11
+73651	73890	CDS
+			db_xref	SEED:fig|6666666.555688.peg.139
+			product	hypothetical protein
+			transl_table	11
+73930	74178	CDS
+			db_xref	SEED:fig|6666666.555688.peg.140
+			product	hypothetical protein
+			transl_table	11
+74189	74572	CDS
+			db_xref	SEED:fig|6666666.555688.peg.141
+			product	hypothetical protein
+			transl_table	11
+74699	74788	CDS
+			db_xref	SEED:fig|6666666.555688.peg.142
+			product	hypothetical protein
+			transl_table	11
+74785	75102	CDS
+			db_xref	SEED:fig|6666666.555688.peg.143
+			product	hypothetical protein
+			transl_table	11
+75095	75541	CDS
+			db_xref	SEED:fig|6666666.555688.peg.144
+			product	hypothetical protein
+			transl_table	11
+75538	75936	CDS
+			db_xref	SEED:fig|6666666.555688.peg.145
+			product	hypothetical protein
+			transl_table	11
+75939	76121	CDS
+			db_xref	SEED:fig|6666666.555688.peg.146
+			product	hypothetical protein
+			transl_table	11
+76121	76651	CDS
+			db_xref	SEED:fig|6666666.555688.peg.147
+			product	hypothetical protein
+			transl_table	11
+76744	77571	CDS
+			db_xref	SEED:fig|6666666.555688.peg.148
+			product	hypothetical protein
+			transl_table	11
+77627	77827	CDS
+			db_xref	SEED:fig|6666666.555688.peg.149
+			product	hypothetical protein
+			transl_table	11
+77827	78024	CDS
+			db_xref	SEED:fig|6666666.555688.peg.150
+			product	hypothetical protein
+			transl_table	11
+78021	78254	CDS
+			db_xref	SEED:fig|6666666.555688.peg.151
+			product	hypothetical protein
+			transl_table	11
+78268	79137	CDS
+			db_xref	SEED:fig|6666666.555688.peg.152
+			product	Putative transposase or IS (ACLAME 318)
+			transl_table	11
+79189	79491	CDS
+			db_xref	SEED:fig|6666666.555688.peg.153
+			product	hypothetical protein
+			transl_table	11
+79622	80344	CDS
+			db_xref	SEED:fig|6666666.555688.peg.154
+			product	hypothetical protein
+			transl_table	11
+80341	80589	CDS
+			db_xref	SEED:fig|6666666.555688.peg.155
+			product	hypothetical protein
+			transl_table	11
+80934	80761	CDS
+			db_xref	SEED:fig|6666666.555688.peg.156
+			product	hypothetical protein
+			transl_table	11
+84836	80934	CDS
+			db_xref	SEED:fig|6666666.555688.peg.157
+			product	hypothetical protein
+			transl_table	11
+85107	84919	CDS
+			db_xref	SEED:fig|6666666.555688.peg.158
+			product	hypothetical protein
+			transl_table	11
+85373	85107	CDS
+			db_xref	SEED:fig|6666666.555688.peg.159
+			product	hypothetical protein
+			transl_table	11
+86694	85498	CDS
+			db_xref	SEED:fig|6666666.555688.peg.160
+			product	hypothetical protein
+			transl_table	11
+88240	86834	CDS
+			db_xref	SEED:fig|6666666.555688.peg.161
+			product	Nicotinamide phosphoribosyltransferase (EC 2.4.2.12)
+			EC_number	2.4.2.12
+			transl_table	11
+			db_xref	GO:0047280
+88594	88298	CDS
+			db_xref	SEED:fig|6666666.555688.peg.162
+			product	hypothetical protein
+			transl_table	11
+89634	88594	CDS
+			db_xref	SEED:fig|6666666.555688.peg.163
+			product	Nicotinamide-nucleotide adenylyltransferase, NadM family (EC 2.7.7.1) / ADP-ribose pyrophosphatase (EC 3.6.1.13)
+			EC_number	2.7.7.1
+			db_xref	GO:0000309
+			transl_table	11
+			db_xref	GO:0047631
+			EC_number	3.6.1.13
+89860	89735	CDS
+			db_xref	SEED:fig|6666666.555688.peg.164
+			product	hypothetical protein
+			transl_table	11
+90333	89857	CDS
+			db_xref	SEED:fig|6666666.555688.peg.165
+			product	hypothetical protein
+			transl_table	11
+90812	90330	CDS
+			db_xref	SEED:fig|6666666.555688.peg.166
+			product	hypothetical protein
+			transl_table	11
+92086	90809	CDS
+			db_xref	SEED:fig|6666666.555688.peg.167
+			product	hypothetical protein
+			transl_table	11
+92577	92155	CDS
+			db_xref	SEED:fig|6666666.555688.peg.168
+			product	hypothetical protein
+			transl_table	11
+93140	92577	CDS
+			db_xref	SEED:fig|6666666.555688.peg.169
+			product	hypothetical protein
+			transl_table	11
+93945	93301	CDS
+			db_xref	SEED:fig|6666666.555688.peg.170
+			product	hypothetical protein
+			transl_table	11
+94780	94133	CDS
+			db_xref	SEED:fig|6666666.555688.peg.171
+			product	hypothetical protein
+			transl_table	11
+95278	94883	CDS
+			db_xref	SEED:fig|6666666.555688.peg.172
+			product	hypothetical protein
+			transl_table	11
+95465	95280	CDS
+			db_xref	SEED:fig|6666666.555688.peg.173
+			product	hypothetical protein
+			transl_table	11
+95609	97762	CDS
+			db_xref	SEED:fig|6666666.555688.peg.174
+			product	hypothetical protein
+			transl_table	11
+97793	99481	CDS
+			db_xref	SEED:fig|6666666.555688.peg.175
+			product	Phage rIIB lysis inhibitor
+			transl_table	11
+99564	99968	CDS
+			db_xref	SEED:fig|6666666.555688.peg.176
+			product	hypothetical protein
+			transl_table	11
+100041	100478	CDS
+			db_xref	SEED:fig|6666666.555688.peg.177
+			product	hypothetical protein
+			transl_table	11
+100478	101467	CDS
+			db_xref	SEED:fig|6666666.555688.peg.178
+			product	hypothetical protein
+			transl_table	11
+101467	101613	CDS
+			db_xref	SEED:fig|6666666.555688.peg.179
+			product	hypothetical protein
+			transl_table	11
+101613	101873	CDS
+			db_xref	SEED:fig|6666666.555688.peg.180
+			product	hypothetical protein
+			transl_table	11
+101885	102118	CDS
+			db_xref	SEED:fig|6666666.555688.peg.181
+			product	hypothetical protein
+			transl_table	11
+102118	103980	CDS
+			db_xref	SEED:fig|6666666.555688.peg.182
+			product	hypothetical protein
+			transl_table	11
+104035	104607	CDS
+			db_xref	SEED:fig|6666666.555688.peg.183
+			product	hypothetical protein
+			transl_table	11
+104616	105179	CDS
+			db_xref	SEED:fig|6666666.555688.peg.184
+			product	hypothetical protein
+			transl_table	11
+105176	105292	CDS
+			db_xref	SEED:fig|6666666.555688.peg.185
+			product	hypothetical protein
+			transl_table	11
+105285	107522	CDS
+			db_xref	SEED:fig|6666666.555688.peg.186
+			product	hypothetical protein
+			transl_table	11
+107571	108221	CDS
+			db_xref	SEED:fig|6666666.555688.peg.187
+			product	DNA polymerase III epsilon subunit (EC 2.7.7.7)
+			EC_number	2.7.7.7
+			transl_table	11
+			db_xref	GO:0003887
+108218	108592	CDS
+			db_xref	SEED:fig|6666666.555688.peg.188
+			product	hypothetical protein
+			transl_table	11
+108589	109767	CDS
+			db_xref	SEED:fig|6666666.555688.peg.189
+			product	hypothetical protein
+			transl_table	11
+109867	110703	CDS
+			db_xref	SEED:fig|6666666.555688.peg.190
+			product	hypothetical protein
+			transl_table	11
+110786	111088	CDS
+			db_xref	SEED:fig|6666666.555688.peg.191
+			product	hypothetical protein
+			transl_table	11
+111160	112584	CDS
+			db_xref	SEED:fig|6666666.555688.peg.192
+			product	RecD-like DNA helicase Atu2026
+			transl_table	11
+112584	112910	CDS
+			db_xref	SEED:fig|6666666.555688.peg.193
+			product	hypothetical protein
+			transl_table	11
+112907	113533	CDS
+			db_xref	SEED:fig|6666666.555688.peg.194
+			product	hypothetical protein
+			transl_table	11
+113535	114134	CDS
+			db_xref	SEED:fig|6666666.555688.peg.195
+			product	hypothetical protein
+			transl_table	11
+114167	114787	CDS
+			db_xref	SEED:fig|6666666.555688.peg.196
+			product	hypothetical protein
+			transl_table	11
+114787	115266	CDS
+			db_xref	SEED:fig|6666666.555688.peg.197
+			product	hypothetical protein
+			transl_table	11
+115263	115571	CDS
+			db_xref	SEED:fig|6666666.555688.peg.198
+			product	hypothetical protein
+			transl_table	11
+115561	116517	CDS
+			db_xref	SEED:fig|6666666.555688.peg.199
+			product	Phage protein
+			transl_table	11
+116517	116768	CDS
+			db_xref	SEED:fig|6666666.555688.peg.200
+			product	hypothetical protein
+			transl_table	11
+116768	117106	CDS
+			db_xref	SEED:fig|6666666.555688.peg.201
+			product	hypothetical protein
+			transl_table	11
+117290	118267	CDS
+			db_xref	SEED:fig|6666666.555688.peg.202
+			product	hypothetical protein
+			transl_table	11
+118296	119999	CDS
+			db_xref	SEED:fig|6666666.555688.peg.203
+			product	Ribonucleotide reductase of class Ia (aerobic), alpha subunit (EC 1.17.4.1)
+			EC_number	1.17.4.1
+			transl_table	11
+			db_xref	GO:0004748
+120072	120260	CDS
+			db_xref	SEED:fig|6666666.555688.peg.204
+			product	hypothetical protein
+			transl_table	11
+120263	120394	CDS
+			db_xref	SEED:fig|6666666.555688.peg.205
+			product	hypothetical protein
+			transl_table	11
+120394	120627	CDS
+			db_xref	SEED:fig|6666666.555688.peg.206
+			product	hypothetical protein
+			transl_table	11
+120768	121316	CDS
+			db_xref	SEED:fig|6666666.555688.peg.207
+			product	Deoxyuridine 5'-triphosphate nucleotidohydrolase (EC 3.6.1.23)
+			EC_number	3.6.1.23
+			transl_table	11
+			db_xref	GO:0004170
+121533	122201	CDS
+			db_xref	SEED:fig|6666666.555688.peg.208
+			product	hypothetical protein
+			transl_table	11
+122756	123034	CDS
+			db_xref	SEED:fig|6666666.555688.peg.209
+			product	hypothetical protein
+			transl_table	11
+124187	123027	CDS
+			db_xref	SEED:fig|6666666.555688.peg.210
+			product	hypothetical protein
+			transl_table	11
+124522	124250	CDS
+			db_xref	SEED:fig|6666666.555688.peg.211
+			product	hypothetical protein
+			transl_table	11
+124877	124503	CDS
+			db_xref	SEED:fig|6666666.555688.peg.212
+			product	hypothetical protein
+			transl_table	11
+125218	124877	CDS
+			db_xref	SEED:fig|6666666.555688.peg.213
+			product	hypothetical protein
+			transl_table	11
+125695	125225	CDS
+			db_xref	SEED:fig|6666666.555688.peg.214
+			product	hypothetical protein
+			transl_table	11
+125982	125674	CDS
+			db_xref	SEED:fig|6666666.555688.peg.215
+			product	hypothetical protein
+			transl_table	11
+126787	125996	CDS
+			db_xref	SEED:fig|6666666.555688.peg.216
+			product	N-acetylmuramoyl-L-alanine amidase (EC 3.5.1.28)
+			EC_number	3.5.1.28
+			transl_table	11
+127812	126841	CDS
+			db_xref	SEED:fig|6666666.555688.peg.217
+			product	hypothetical protein
+			transl_table	11
+129647	127818	CDS
+			db_xref	SEED:fig|6666666.555688.peg.218
+			product	hypothetical protein
+			transl_table	11
+131182	129647	CDS
+			db_xref	SEED:fig|6666666.555688.peg.219
+			product	Phage tail fiber protein
+			transl_table	11
+135152	131253	CDS
+			db_xref	SEED:fig|6666666.555688.peg.220
+			product	hypothetical protein
+			transl_table	11
+135585	135142	CDS
+			db_xref	SEED:fig|6666666.555688.peg.221
+			product	hypothetical protein
+			transl_table	11
+137651	135585	CDS
+			db_xref	SEED:fig|6666666.555688.peg.222
+			product	hypothetical protein
+			transl_table	11
+138574	137648	CDS
+			db_xref	SEED:fig|6666666.555688.peg.223
+			product	Gene Transfer Agent (GTA) ORFG12
+			transl_table	11
+139565	138588	CDS
+			db_xref	SEED:fig|6666666.555688.peg.224
+			product	hypothetical protein
+			transl_table	11
+140988	139642	CDS
+			db_xref	SEED:fig|6666666.555688.peg.225
+			product	hypothetical protein
+			transl_table	11
+146476	141029	CDS
+			db_xref	SEED:fig|6666666.555688.peg.226
+			product	hypothetical protein
+			transl_table	11
+146652	146485	CDS
+			db_xref	SEED:fig|6666666.555688.peg.227
+			product	hypothetical protein
+			transl_table	11
+147314	146877	CDS
+			db_xref	SEED:fig|6666666.555688.peg.228
+			product	hypothetical protein
+			transl_table	11
+149065	147452	CDS
+			db_xref	SEED:fig|6666666.555688.peg.229
+			product	hypothetical protein
+			transl_table	11
+10615	10544	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.1
+			product	tRNA-Pro-GGG
+10699	10628	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.2
+			product	tRNA-Thr-CGT
+10775	10704	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.3
+			product	tRNA-Arg-CCT
+12333	12262	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.4
+			product	tRNA-Thr-GGT
+12412	12342	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.5
+			product	tRNA-Trp-CCA
+12758	12680	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.6
+			product	tRNA-Leu-CAA
+12918	12839	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.7
+			product	tRNA-Leu-CAG
+13003	12923	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.8
+			product	tRNA-Leu-GAG
+14241	14169	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.9
+			product	tRNA-Ile-GAT
+14476	14404	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.10
+			product	tRNA-Gly-GCC
+14634	14564	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.11
+			product	tRNA-Gln-CTG
+14781	14711	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.12
+			product	tRNA-Gly-TCC
+14937	14864	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.13
+			product	tRNA-Arg-ACG
+15850	15780	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.14
+			product	tRNA-Asp-GTC
+16027	15945	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.15
+			product	tRNA-Cys-GCA
+16108	16037	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.16
+			product	tRNA-Lys-TTT
+16963	16892	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.17
+			product	tRNA-Val-GAC
+17131	17059	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.18
+			product	tRNA-Val-TAC
+19584	19513	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.19
+			product	tRNA-Phe-GAA
+19671	19589	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.20
+			product	tRNA-Tyr-GTA
+22743	22670	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.21
+			product	tRNA-Arg-TCT
+23851	23779	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.22
+			product	tRNA-Met-CAT
+23977	23905	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.23
+			product	tRNA-Pro-CGG
+24267	24192	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.24
+			product	tRNA-Met-CAT
+24573	24501	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.25
+			product	tRNA-Met-CAT
+24799	24726	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.26
+			product	tRNA-Glu-CTC
+25102	25029	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.27
+			product	tRNA-Glu-TTC
+122248	122319	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.28
+			product	tRNA-Cys-GCA
+122248	122319	tRNA
+			db_xref	SEED:fig|6666666.555688.rna.28
+			product	tRNA-Cys-GCA

@@ -1,0 +1,35 @@
+Sequence                               		tRNA  	Bounds	tRNA	Anti	Intron Bounds	Inf	      
+Name                                   	tRNA #	Begin 	End   	Type	Codon	Begin	End	Score	Note
+--------                               	------	----- 	------	----	-----	-----	----	------	------
+Phaeobacter_phage_MD18_Complete_Genome 	1	122248	122322	Cys	GCA	0	0	68.6	
+Phaeobacter_phage_MD18_Complete_Genome 	2	25102 	25029 	Glu	TTC	0	0	68.7	
+Phaeobacter_phage_MD18_Complete_Genome 	3	24799 	24726 	Glu	CTC	0	0	67.5	
+Phaeobacter_phage_MD18_Complete_Genome 	4	24573 	24498 	Met	CAT	0	0	70.3	
+Phaeobacter_phage_MD18_Complete_Genome 	5	24267 	24192 	Met	CAT	0	0	53.1	
+Phaeobacter_phage_MD18_Complete_Genome 	6	23977 	23905 	Pro	CGG	0	0	60.6	
+Phaeobacter_phage_MD18_Complete_Genome 	7	23851 	23779 	Met	CAT	0	0	66.2	
+Phaeobacter_phage_MD18_Complete_Genome 	8	22745 	22669 	Arg	TCT	0	0	44.6	
+Phaeobacter_phage_MD18_Complete_Genome 	9	19671 	19589 	Tyr	GTA	0	0	51.4	
+Phaeobacter_phage_MD18_Complete_Genome 	10	19584 	19513 	Phe	GAA	0	0	40.1	
+Phaeobacter_phage_MD18_Complete_Genome 	11	17131 	17059 	Val	TAC	0	0	59.9	
+Phaeobacter_phage_MD18_Complete_Genome 	12	16963 	16892 	Val	GAC	0	0	67.5	
+Phaeobacter_phage_MD18_Complete_Genome 	13	16794 	16721 	Asn	GTT	0	0	25.8	
+Phaeobacter_phage_MD18_Complete_Genome 	14	16108 	16034 	Lys	TTT	0	0	72.5	
+Phaeobacter_phage_MD18_Complete_Genome 	15	16027 	15942 	Cys	GCA	0	0	47.4	
+Phaeobacter_phage_MD18_Complete_Genome 	16	15933 	15858 	His	GTG	0	0	45.1	
+Phaeobacter_phage_MD18_Complete_Genome 	17	15850 	15780 	Asp	GTC	0	0	48.5	
+Phaeobacter_phage_MD18_Complete_Genome 	18	14937 	14864 	Arg	ACG	0	0	76.4	
+Phaeobacter_phage_MD18_Complete_Genome 	19	14855 	14786 	Undet	NNN	0	0	22.3	
+Phaeobacter_phage_MD18_Complete_Genome 	20	14781 	14708 	Gly	TCC	0	0	65.9	
+Phaeobacter_phage_MD18_Complete_Genome 	21	14634 	14561 	Gln	CTG	0	0	61.4	
+Phaeobacter_phage_MD18_Complete_Genome 	22	14476 	14401 	Gly	GCC	0	0	73.3	
+Phaeobacter_phage_MD18_Complete_Genome 	23	14241 	14169 	Ile	GAT	0	0	62.8	
+Phaeobacter_phage_MD18_Complete_Genome 	24	13003 	12923 	Leu	GAG	0	0	56.3	
+Phaeobacter_phage_MD18_Complete_Genome 	25	12918 	12839 	Leu	CAG	0	0	58.2	
+Phaeobacter_phage_MD18_Complete_Genome 	26	12758 	12680 	Leu	CAA	0	0	50.9	
+Phaeobacter_phage_MD18_Complete_Genome 	27	12486 	12417 	Undet	NNN	0	0	38.2	
+Phaeobacter_phage_MD18_Complete_Genome 	28	12412 	12342 	Trp	CCA	0	0	72.7	
+Phaeobacter_phage_MD18_Complete_Genome 	29	12333 	12259 	Thr	GGT	0	0	61.6	
+Phaeobacter_phage_MD18_Complete_Genome 	30	10775 	10704 	Arg	CCT	0	0	66.9	
+Phaeobacter_phage_MD18_Complete_Genome 	31	10699 	10628 	Thr	CGT	0	0	80.8	
+Phaeobacter_phage_MD18_Complete_Genome 	32	10615 	10544 	Pro	GGG	0	0	67.7	

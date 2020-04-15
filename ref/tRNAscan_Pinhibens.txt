@@ -1,0 +1,61 @@
+Sequence            		tRNA   	Bounds 	tRNA	Anti	Intron Bounds	Inf	Isotype	Isotype	      
+Name                	tRNA #	Begin  	End    	Type	Codon	Begin	End	Score	CM	Score	Note
+--------            	------	-----  	------ 	----	-----	-----	----	------	-------	-------	------
+PhaeobacterInhibens 	1	14785  	14860  	Ala	TGC	0	0	79.7	Ala	111.6	
+PhaeobacterInhibens 	2	14886  	14962  	Ile	GAT	0	0	85.8	Ile	113.8	
+PhaeobacterInhibens 	3	18582  	18658  	fMet	CAT	0	0	77.6	fMet	127.6	
+PhaeobacterInhibens 	4	126534 	126609 	Trp	CCA	0	0	82.0	Trp	87.8	
+PhaeobacterInhibens 	5	201266 	201342 	Arg	ACG	0	0	85.1	Arg	93.9	
+PhaeobacterInhibens 	6	254266 	254340 	Gln	TTG	0	0	70.9	Gln	84.9	
+PhaeobacterInhibens 	7	498878 	498967 	Ser	GCT	0	0	86.6	Ser	111.7	
+PhaeobacterInhibens 	8	695451 	695537 	Leu	GAG	0	0	70.1	Leu	102.0	
+PhaeobacterInhibens 	9	794377 	794452 	Thr	TGT	0	0	84.3	Thr	101.6	
+PhaeobacterInhibens 	10	834204 	834293 	Ser	TGA	0	0	81.4	Ser	108.9	
+PhaeobacterInhibens 	11	926059 	926135 	His	GTG	0	0	66.0	Thr	81.2	IPD:-8.90
+PhaeobacterInhibens 	12	1220885	1220970	Leu	TAA	0	0	83.1	Leu	108.1	
+PhaeobacterInhibens 	13	1447316	1447405	Ser	GGA	0	0	81.6	Ser	113.9	
+PhaeobacterInhibens 	14	1663691	1663767	Arg	CCG	0	0	89.0	Arg	102.7	
+PhaeobacterInhibens 	15	1735005	1735079	Asn	GTT	0	0	82.8	Asn	103.9	
+PhaeobacterInhibens 	16	2349453	2349526	Cys	GCA	0	0	77.7	Cys	96.3	
+PhaeobacterInhibens 	17	2694187	2694263	Arg	TCT	0	0	77.9	Lys	92.4	IPD:-3.30
+PhaeobacterInhibens 	18	3122391	3122467	Pro	CGG	0	0	76.1	Pro	104.1	
+PhaeobacterInhibens 	19	3192638	3192713	Ala	GGC	0	0	76.9	Ala	114.8	
+PhaeobacterInhibens 	20	3259389	3259463	Thr	GGT	0	0	83.3	Thr	97.1	
+PhaeobacterInhibens 	21	3407046	3407120	Val	GAC	0	0	81.5	Val	102.4	
+PhaeobacterInhibens 	22	3724592	3724667	Thr	CGT	0	0	84.0	Thr	96.4	
+PhaeobacterInhibens 	23	3770996	3770910	Leu	CAG	0	0	79.6	Leu	114.3	
+PhaeobacterInhibens 	24	3770718	3770632	Leu	CAG	0	0	79.6	Leu	114.3	
+PhaeobacterInhibens 	25	3558975	3558900	Lys	TTT	0	0	94.7	Lys	111.9	
+PhaeobacterInhibens 	26	3551418	3551342	Arg	CCT	0	0	83.6	Arg	100.8	
+PhaeobacterInhibens 	27	3393043	3392968	Ala	TGC	0	0	79.7	Ala	111.6	
+PhaeobacterInhibens 	28	3392942	3392866	Ile	GAT	0	0	85.8	Ile	113.8	
+PhaeobacterInhibens 	29	3389246	3389170	fMet	CAT	0	0	77.6	fMet	127.6	
+PhaeobacterInhibens 	30	3250067	3249993	Phe	GAA	0	0	73.6	Phe	95.5	
+PhaeobacterInhibens 	31	3213065	3212971	Phe	GAA	0	0	25.7	Phe	42.6	pseudo
+PhaeobacterInhibens 	32	3168662	3168586	Met	CAT	0	0	80.4	Met	102.7	
+PhaeobacterInhibens 	33	2999171	2999096	Ala	TGC	0	0	79.7	Ala	111.6	
+PhaeobacterInhibens 	34	2999070	2998994	Ile	GAT	0	0	85.8	Ile	113.8	
+PhaeobacterInhibens 	35	2995375	2995299	fMet	CAT	0	0	77.6	fMet	127.6	
+PhaeobacterInhibens 	36	2674707	2674632	Ala	TGC	0	0	79.7	Ala	111.6	
+PhaeobacterInhibens 	37	2674606	2674530	Ile	GAT	0	0	85.8	Ile	113.8	
+PhaeobacterInhibens 	38	2670910	2670834	fMet	CAT	0	0	77.6	fMet	127.6	
+PhaeobacterInhibens 	39	2342982	2342909	Gly	TCC	0	0	66.8	Gly	77.5	
+PhaeobacterInhibens 	40	2123514	2123440	Val	CAC	0	0	76.9	Val	96.8	
+PhaeobacterInhibens 	41	2119586	2119511	Val	TAC	0	0	79.7	Val	101.7	
+PhaeobacterInhibens 	42	2118565	2118489	Asp	GTC	0	0	87.8	Asp	116.0	
+PhaeobacterInhibens 	43	2118438	2118362	Asp	GTC	0	0	87.8	Asp	116.0	
+PhaeobacterInhibens 	44	2118274	2118198	Asp	GTC	0	0	87.8	Asp	116.0	
+PhaeobacterInhibens 	45	1939529	1939445	Leu	TAG	0	0	73.9	Leu	114.6	
+PhaeobacterInhibens 	46	1752021	1751945	Pro	TGG	0	0	78.1	Pro	106.9	
+PhaeobacterInhibens 	47	1696151	1696066	Leu	CAA	0	0	70.5	Leu	106.3	
+PhaeobacterInhibens 	48	1609258	1609169	Ser	CGA	0	0	77.3	Ser	112.7	
+PhaeobacterInhibens 	49	1579551	1579478	Gly	CCC	0	0	60.1	Gly	77.7	
+PhaeobacterInhibens 	50	1369344	1369269	Ile2	CAT	0	0	82.1	Ile2	100.1	
+PhaeobacterInhibens 	51	1349464	1349390	Asn	GTT	0	0	82.8	Asn	103.9	
+PhaeobacterInhibens 	52	1158492	1158416	Pro	GGG	0	0	77.0	Pro	104.8	
+PhaeobacterInhibens 	53	958868 	958794 	Gly	GCC	0	0	78.1	Gly	96.0	
+PhaeobacterInhibens 	54	956571 	956497 	Gly	GCC	0	0	78.1	Gly	96.0	
+PhaeobacterInhibens 	55	956282 	956208 	Gly	GCC	0	0	78.1	Gly	96.0	
+PhaeobacterInhibens 	56	944144 	944061 	Tyr	GTA	0	0	49.5	Tyr	52.6	
+PhaeobacterInhibens 	57	889386 	889312 	Glu	TTC	0	0	64.9	Glu	87.9	
+PhaeobacterInhibens 	58	888976 	888902 	Glu	TTC	0	0	64.9	Glu	87.9	

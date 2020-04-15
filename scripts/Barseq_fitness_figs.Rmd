@@ -1,0 +1,719 @@
+
+
+
+```{r}
+setwd("~/Google Drive/Kosuri_Lab/WoodsHole_MD_2018/Miniproject/BarSeq/scripts/")
+
+library(ggplot2)
+library(reshape2)
+require(cowplot)
+library(tidyverse)
+library(wesanderson)
+library(Biostrings)
+library(tidyverse)
+library(ggsignif)
+library(broom)
+
+
+options(stringsAsFactors = F)
+```
+
+
+
+Load in barcode counts
+```{r}
+filelist = list.files(path = '../processed_data/BarSeq/', pattern = '*BarcodeCounts.txt')
+for(i in filelist) {
+  x <- read.table(paste('../processed_data/BarSeq/',i, sep = ''), col.names=c(i, 'barcode'), header = F)
+  x[,1] <- 1000000*x[,1]/sum(x[,1])  #Normalizes by RPM
+  assign(i,x)  
+}
+
+#combine reads for all barcodes 
+Barseq_Pi <- full_join(`CGGAGCCT+CGTCTAAT_BarcodeCounts.txt`, `ATGCGCAG+CGTCTAAT_BarcodeCounts.txt`, by='barcode') %>%
+  full_join(., `TAGCGCTC+CGTCTAAT_BarcodeCounts.txt`, by='barcode') %>%
+  full_join(., `CGGAGCCT+TCTCTCCG_BarcodeCounts.txt`, by='barcode') %>%
+  full_join(., `ATGCGCAG+TCTCTCCG_BarcodeCounts.txt`, by='barcode') %>%
+  full_join(., `TAGCGCTC+TCTCTCCG_BarcodeCounts.txt`, by='barcode') %>%
+  full_join(., `CGGAGCCT+TCGACTAG_BarcodeCounts.txt`, by='barcode') %>%
+  full_join(., `ATGCGCAG+TCGACTAG_BarcodeCounts.txt`, by='barcode') %>%
+  full_join(., `TAGCGCTC+TCGACTAG_BarcodeCounts.txt`, by='barcode') 
+
+
+names(Barseq_Pi) = c("Pre_1", "barcode", "Pre_2", "Pre_3",
+                     "Post_0_1", "Post_0_2", "Post_0_3",
+                     "Post_2_1", "Post_2_2", "Post_2_3") #rename all colummns that were named after text file
+rm(list = c(filelist))
+rm(x)
+```
+
+Calculate gene-specific barcode counts
+```{r}
+
+#Add Pseudocount
+Barseq_Pi[is.na(Barseq_Pi)]<- as.numeric(1)
+
+#Generate mapping file of barcode and gene
+
+#Pi_Mapping<- read.table("../processed_data/Barseq_Mapping.txt", header = F, col.names = c("barcode", "gene", "start", "end"))
+
+#Mapped_barcodes <- inner_join(Pi_Mapping, Barseq_Pi, by = 'barcode') #75% of barcodes show up!
+
+
+#OR USING RAST ANNOTATIONS
+Pi_Mapping_RAST<- read.table("../processed_data/Barseq_Mapping_RAST.txt", header = F, col.names = c("barcode", "gene", "start", "end"))
+Mapped_barcodes <- inner_join(Pi_Mapping_RAST, Barseq_Pi, by = 'barcode') #75% of barcodes show up!
+
+
+##Calculate Fitness scores
+
+
+Fitness_scores <- Mapped_barcodes %>% group_by(gene) %>% 
+  mutate(num_knockouts = n(),
+         pre_ave = sum(Pre_1, Pre_2, Pre_3),
+         post_0_ave = sum(Post_0_1, Post_0_2, Post_0_3),
+         post_2_ave = sum(Post_2_1, Post_2_2, Post_2_3),
+         post_0_fitness = post_0_ave/pre_ave,
+         post_2_fitness = post_2_ave/pre_ave,
+         overall_fitness = log2(post_2_fitness/post_0_fitness)) %>%
+  ungroup() %>%
+  select(gene, start, end, num_knockouts, pre_ave, post_0_ave, post_2_ave,
+         post_0_fitness, post_2_fitness, overall_fitness) %>%
+  distinct()
+
+
+#USING WHETMORE ET AL ANNOTATIONS
+#Gene_fitness_scores <- read.csv("../ref/p.inhibens_genes.tab", header = T, sep = '\t') %>%
+#                      select(gene=locusId, desc) %>% left_join(Fitness_scores,., by = 'gene')
+
+#write.table(Gene_fitness_scores, "../processed_data/P.i_fitness_scores.txt", quote = F, row.names = F, sep = '\t')
+Gene_fitness_scores<- read.table("../processed_data/P.i_fitness_scores.txt", header = T)
+```
+
+
+
+#T.test between barcodes (CATCHES WEAK AF EFFECT SIZES)
+```{}
+
+gene_stats <- Mapped_barcodes %>% group_by(gene) %>% 
+    mutate(num_knockouts = n(),
+    pre_ave = (Pre_1+Pre_2+Pre_3)/3,
+         post_0_ave = (Post_0_1+ Post_0_2+ Post_0_3)/3,
+         post_2_ave = (Post_2_1+ Post_2_2+ Post_2_3)/3,
+      post_0_fitness = post_0_ave/pre_ave,
+      post_2_fitness = post_2_ave/pre_ave) %>% 
+  ungroup() %>%
+  filter(num_knockouts > 2) %>%
+    select(gene, post_0_fitness, post_2_fitness) %>% 
+    melt(by = variable) %>% 
+    group_by(gene) %>% mutate(num_bc = n()) %>% filter(num_bc > 1) %>%
+    do(tidy(t.test(value~variable, data=.))) %>% select(gene, p.value) %>% ungroup() %>%
+    mutate(adjusted_p.value = p.adjust(p.value)) %>% filter(adjusted_p.value < .05)
+
+
+```
+
+
+
+
+
+
+
+```{r}
+#Look at Post0 vs Post2
+pal <- wes_palette("Zissou1", 8, type = "continuous")
+sd <- sample(Fitness_scores$overall_fitness, 1e6, replace = TRUE, prob = NULL) %>% sd()
+mean <- sample(Fitness_scores$overall_fitness, 1e6, replace = TRUE, prob = NULL) %>% mean()
+
+
+upper_threshold <- mean+3*sd
+
+lower_threshold <- mean-3*sd
+
+Sig_genes <- filter(Fitness_scores, overall_fitness > upper_threshold | overall_fitness < lower_threshold) %>% filter(num_knockouts > 2)
+
+#Sig_genes <- semi_join(Fitness_scores, gene_stats, by = 'gene')
+
+#plot Fitness across genome
+
+ggplot(Fitness_scores, aes(x = post_0_ave, y = post_2_ave)) +
+            geom_point() +
+            scale_x_log10(breaks = c(100, 1000, 10000)) +
+            scale_y_log10(breaks = c(100, 1000, 10000)) +
+            annotation_logticks(sides = 'bl') +
+            labs(x="No Treatment Counts",
+                 y = "Post-phage Counts", 
+                 title = "Phage Treatment Enriches for Particular Knockouts") +
+            geom_abline(color = 'deepskyblue1', linetype = 'dashed', size = 1.4) +
+            geom_point(data=Sig_genes, aes(post_0_ave, post_2_ave), color = 'firebrick1', size = 1.4) +
+   theme(axis.text.x = element_text(size = 18), 
+        axis.text.y = element_text(size = 18),
+        axis.title.x.bottom = element_text(size = 18),
+        axis.title.y.left = element_text(size = 18))
+
+ggsave("../figs/fig3/PrePhage_vs_PostPhage.pdf", units = 'in', width = 5, height = 4.02)
+
+```
+
+
+
+```{r}
+options(scipen=999)
+
+Fitness_scores %>% 
+  select(gene, overall_fitness) %>% 
+  #melt() %>% 
+  ggplot(aes(x=overall_fitness)) + 
+    geom_histogram(alpha = .2, color = 'black') + 
+    scale_x_log10() + 
+    geom_vline(xintercept = upper_threshold, color = 'red', linetype ='dashed', size = 1.1) +
+    labs(x = 'Fitness score', Y = '# of genes') +
+     theme(axis.text.x = element_text(size = 18,angle = 45, hjust=1), 
+        axis.text.y = element_text(size = 18),
+        axis.title.x.bottom = element_text(size = 18),
+        axis.title.y.left = element_text(size = 18))
+
+ggsave("../figs/S2_Fitness Score Distributions.png", units = 'in', width = 5, height = 3.02)
+
+ 
+```
+
+
+```{r}
+
+#USING RAST ANNOTATIONS
+
+Gene_fitness_scores_RAST <- read.csv("../ref/RAST_Pi_Annotation.txt",
+                                     header = T, sep = '\t') %>% 
+    select(gene=location, RAST_desc=function.) %>% 
+    left_join(Fitness_scores,., by = 'gene')
+
+#write.table(Gene_fitness_scores_RAST, "../processed_data/P.i_fitness_scores_RAST.txt", quote = F, row.names = F, sep = '\t')
+
+#Determine significance threshold
+
+sd <- sample(Fitness_scores$overall_fitness, 1e6, replace = TRUE, prob = NULL) %>% sd()
+mean <- sample(Fitness_scores$overall_fitness, 1e6, replace = TRUE, prob = NULL) %>% mean()
+
+#plot Fitness across genome
+
+pal <- wes_palette("Zissou1", 8, type = "continuous")
+
+upper_threshold <- mean+3*sd
+
+lower_threshold <- mean-3*sd
+
+ggplot(Fitness_scores, aes(start, overall_fitness)) +
+      geom_point(aes(color = log10(num_knockouts)), size = 2) +
+      scale_color_gradientn(colours = pal) +
+      geom_hline(yintercept = c(upper_threshold, lower_threshold),
+                 linetype = 'dashed', color = 'red', size = 1.2) +
+      ylim(-5, 8) +
+      labs(x="Genomic Position", y="Log2(Fitness Score)", title = "") +
+   theme(axis.text.x = element_text(size = 24), 
+        axis.text.y = element_text(size = 24),
+        axis.title.x.bottom = element_text(size = 24),
+        axis.title.y.left = element_text(size = 24),
+        legend.text = element_text(size = 24))
+
+
+ggsave("../figs/fig4/Gene_KO_Fitness_by_Genome.pdf", units = 'in', width = 12, height = 5.02)
+
+
+```
+
+
+```{r}
+#Read in SEED Subsystems and try to make sense of it all
+
+SEED_Subsystems <- read.table("../ref/SEED_Subsystems.tsv", header = T, sep = '\t', fill = NA) %>%
+    select('Start', 'Stop', 'Strand', 'Subsystem')
+
+minus_temp <- filter(SEED_Subsystems, Strand == '-') %>%
+        select('start' = 'Stop', 'end' = 'Start', 'strand'='Strand', 'Subsystem')
+
+plus_temp <- filter(SEED_Subsystems, Strand == '+') %>% 
+        select('start' = 'Start', 'end' = 'Stop', 'strand'='Strand', 'Subsystem')
+
+SEED_Subsystems <- rbind(minus_temp, plus_temp)
+
+rm(minus_temp, plus_temp)
+
+RAST_Subs <- inner_join(Gene_fitness_scores_RAST, SEED_Subsystems, by=c('start', 'end')) %>% filter(Subsystem != '- none -')
+
+categories <- read.table("../ref/Category_Subcategories.tsv", header = T, fill = NA, sep = '\t') %>%
+  select(Category, Subcategory, Subsystem) %>%
+  inner_join(RAST_Subs,., by = 'Subsystem') %>% distinct()
+
+categories %>% group_by(Subcategory) %>%
+  mutate(size=n()) %>%
+  distinct() %>% filter(size > 4) %>% ungroup() %>% 
+  ggplot(aes(x=Subcategory, y = overall_fitness)) + 
+  geom_boxplot(aes(color = Subcategory), outlier.shape = NA) +
+  geom_jitter(aes(color = Subcategory), size = 3) +
+  geom_hline(yintercept = c(upper_threshold, lower_threshold), linetype = 'dashed', color = 'black', size = 1) +
+  labs(x="Subcategory", y="Log2(Fitness Score)", title = "") +
+  theme(legend.position="none", axis.text.x = element_text(angle = 90, hjust = 1, size = 24),
+        axis.text.y = element_text(size = 24),
+        axis.title.x.bottom = element_text(size = 18),
+        axis.title.y.left = element_text(size = 24))
+
+ggsave("../figs/fig4/Knockout_FItness_by_SubCategory.pdf", units = 'in', width = 24.58, height = 16.02)
+
+```
+
+
+
+Look at correlations between replicates and post
+```{r}
+#Try with corrplot
+#install.packages("corrplot")
+#library(corrplot)
+
+#corrplot.mixed(cor(Compare_replicates[-8]), order="hclust", tl.col="black",cl.lim = c(0, 1))
+#ggsave("../figs/Correlations_Barseq.pdf")
+
+
+
+```
+
+
+#Get all significant hits, extract sequences and plug sequences into network assembler
+```{r}
+seqs <- read.csv("../ref/RAST_Pi_Annotation.txt", header = T, fill = NA, sep = '\t') %>% 
+              select(gene=location, aa_sequence) %>%
+              inner_join(., Gene_fitness_scores_RAST, by='gene') %>% 
+              filter(overall_fitness > mean+(sd*3) | overall_fitness < mean-sd*3) %>%
+              filter(num_knockouts > 2) %>%
+              select(gene, aa_sequence) %>% filter(aa_sequence != '')
+
+#install.packages("seqRFLP")
+library("seqRFLP")
+df.fasta = dataframe2fas(seqs, file="../processed_data/Sig_Seqs.fasta")
+
+
+#Get significant gene annotations
+read.csv("../ref/RAST_Pi_Annotation.txt", header = T, fill = NA, sep = '\t') %>% 
+              select(gene=location, aa_sequence) %>%
+              inner_join(., Gene_fitness_scores_RAST, by='gene') %>% 
+              filter(overall_fitness > mean+(sd*3) | overall_fitness < mean-sd*3) %>%
+              filter(num_knockouts > 2) %>% select(gene, start, end, overall_fitness, RAST_desc) %>%
+            write.table("../processed_data/SigGenes_table.txt", quote = F, row.names = F, sep = '\t')
+```
+
+
+
+
+#Identify genes in phage that are not in P. inhibens
+```{r}
+
+Pi_functions <- read.table("../ref/RAST_Pi_Annotation.txt", header = T, fill = NA, sep = '\t')
+Pi_functions <- Pi_functions[,8] %>% as.data.frame() %>% distinct()
+names(Pi_functions) <- 'Function'
+phage_functions <- read.table("../ref/PhageAnnotation.tsv", header = T, fill = NA, sep = '\t') %>% select(Function) %>% 
+            group_by(Function) %>% mutate(num_genes = n()) %>% distinct()
+
+
+#How many tRNA genes in pi?
+#Pi_functions[grepl("tRNA-", Pi_functions$Function),] %>% as.data.frame() %>% nrow()
+#How many genes in phage?
+#sum(phage_functions$num_genes)
+
+#How many tRNA in phage
+#phage_functions[grepl("tRNA-", phage_functions$Function),] %>% as.data.frame() %>% nrow()
+
+#How many tRNA unique to phage but not in P. inhibens
+#unique_phage_functions[grepl("tRNA-", unique_phage_functions$Function),] %>% as.data.frame() %>% nrow()
+
+
+
+```
+
+What are tRNA genes of each
+```{r}
+Pi_tRNA <- read.table("../ref/tRNAscan_Pinhibens.txt", 
+                      skip = 3, 
+                      fill = NA, 
+                      row.names = NULL, 
+                      header = F) %>%
+  select('amino_acid'= V5, 'codon'=V6)
+
+#reverse complement anticodons
+Pi_tRNA[,2] <- Pi_tRNA$codon %>% DNAStringSet() %>% reverseComplement() %>% as.data.frame() %>% select('codon' = 'x')# %>% 
+
+
+md18_tRNA <- read.table("../ref/tRNAscan_MD18.txt",
+                        skip = 3,
+                        fill = NA,
+                        row.names = NULL,
+                        header = F) %>%
+  select('amino_acid'= V5, 'codon'=V6) 
+#reverse complement anticodons
+
+md18_tRNA[,2] <- md18_tRNA$codon %>% DNAStringSet() %>% reverseComplement() %>% as.data.frame() %>% select('codon' = 'x')
+
+#Write out table S2
+write.table(md18_tRNA, "../ref/TableS2_tRNAGenes_MD18.csv", quote = F, row.names = F, sep = '\t')
+
+#tRNA unique to P. inhibens
+
+Pi_tRNA_unique <- anti_join(Pi_tRNA, md18_tRNA, by = 'codon')
+
+nrow(Pi_tRNA_unique)
+
+#tRNA unique to MD18
+md18_tRNA_unique <- anti_join(md18_tRNA, Pi_tRNA, by = 'codon')
+
+
+#IMPORTANT! SOME TRNA GENES IN THE PHAGE ARE DUPLICATES, THESE CODONS ARE MODESTLY ENRICHED IN THE PHAGE AND NOT REALLY RARE IN THE HOST
+
+```
+
+
+
+#codon composition of phage vs host 
+```{r}
+#read in phage ORFs
+phage_genes <- read.table("../ref/PhaeobacterPhageMD18Annotations.txt", header = T, fill = NA, sep = '\t') %>%
+  select(feature_id, sequence = 'nucleotide_sequence')
+
+pi_genes <- read.table("../ref/RAST_Pi_Annotation.txt", header = T, fill = NA, sep = '\t') %>%
+    select(feature_id, sequence = 'nucleotide_sequence')
+
+
+# codon frequencies and counts in phage
+temp <- phage_genes %>%
+    mutate(len_seq = nchar(sequence) / 3,
+           round_len_seq = ceiling(len_seq)) %>% 
+    filter(len_seq == round_len_seq) 
+
+
+codon_stats <- temp$sequence %>%
+    paste(., collapse = "") %>%
+    DNAStringSet() %>%
+    oligonucleotideFrequency(width = 3, step = 3) %>%
+    t() %>%
+    as.data.frame() %>%
+    mutate(codon = row.names(.)) %>%
+    mutate(phage_counts = V1, 
+           phage_frequency = V1 / sum(V1)) %>%
+    select(-V1)
+
+#codon frequencies and counts in p. inhibens
+temp <- pi_genes %>%
+    mutate(len_seq = nchar(sequence) / 3,
+           round_len_seq = ceiling(len_seq)) %>% 
+    filter(len_seq == round_len_seq) 
+
+codon_stats <- temp$sequence %>%
+    paste(., collapse ="") %>%
+    DNAStringSet() %>%
+    oligonucleotideFrequency(width = 3, step = 3) %>%
+    t() %>% 
+    as.data.frame() %>%
+    mutate(pi_counts = V1, 
+           pi_frequency = V1 / sum(V1)) %>%
+    select(-V1) %>%
+  cbind(., codon_stats)
+
+codon_stats$amino_acid <- DNAStringSet(codon_stats$codon) %>% 
+    Biostrings::translate() %>% 
+    as.character() 
+
+codon_stats$amino_acid[codon_stats$codon == 'CTG'] <- 'L' #MUST DO THIS SINCE NO.INIT.CODON DOESN'T WORK,
+codon_stats$amino_acid[codon_stats$codon == 'TTG'] <- 'L'
+```
+
+#get aa counts 
+```{r}
+aa_table <- codon_stats %>% 
+    group_by(amino_acid) %>%
+    mutate(aa_count_phage = sum(phage_counts),
+           aa_count_pi = sum(pi_counts)) %>% 
+    ungroup() %>%
+    select(amino_acid, aa_count_phage, aa_count_pi) %>% 
+    distinct()
+
+
+
+```
+
+Chi square test of significant codons within each group
+```{r}
+chisq_codon <- function(codon, df) {
+  print(codon)
+  total_phage <- sum(df$phage_counts)
+  total_pi <- sum(df$pi_counts)
+  codon_count_phage <- df$phage_counts[df$codon == codon]
+  codon_count_pi <- df$pi_counts[df$codon == codon]
+  count_table <- rbind(c(codon_count_phage, codon_count_pi),
+                       c(total_phage, total_pi))
+  result <- chisq.test(count_table)
+  return(result$p.value)
+}
+
+codon_table_full <- data.frame(matrix(nrow = 64, ncol = 2)) %>%
+                      select('codon'='X1', 'p.val'='X2') 
+  
+for (i in 1:nrow(aa_table)) {
+
+    aa <- aa_table$amino_acid[i]
+    print(aa)
+    
+    temp <- filter(codon_stats, amino_acid == aa)
+    
+    codon_table <- data.frame(matrix(nrow = 6))
+    
+    for (i in 1:nrow(temp)) {
+        cd <- temp$codon[i]
+        codon_table$codon[i] <- cd
+        codon_table$p.val[i] <- chisq_codon(cd, temp)
+    
+}
+
+codon_table_full <- distinct(codon_table) %>%
+                      select(codon, p.val) %>%
+                      rbind(codon_table_full, .)
+}
+    
+codon_table_full <- codon_table_full[complete.cases(codon_table_full),] %>%
+                      mutate(p.val.adjust = p.adjust(p.val, method = 'fdr'))
+
+
+```
+
+
+
+Identify codon bias between groups
+```{r}
+signif_codon <- filter(codon_table_full, p.val.adjust < .05)
+
+temp <- codon_stats %>% group_by(amino_acid) %>% 
+    mutate(codon_frequency_phage = phage_counts / sum(phage_counts),
+           codon_frequency_pi = pi_counts / sum(pi_counts),
+           enrichment = log2(codon_frequency_phage / codon_frequency_pi),
+           Type = ifelse(2 ^ enrichment > 1, 'Abundant', 'Depleted')) %>% 
+    ungroup() %>%
+    select(codon, amino_acid, enrichment, Type, codon_frequency_pi, codon_frequency_phage) %>% 
+    # filter(amino_acid == 'L') %>% #Remove this for all amino acids
+    distinct() %>% 
+    left_join(., signif_codon, by = 'codon')
+
+ggplot(temp,aes(codon, enrichment)) + 
+    geom_bar(aes(fill = log2(codon_frequency_pi)), stat = "identity", 
+             color = 'black', alpha = 0.8) +
+    scale_fill_gradientn(colours = c('red', 'white', 'blue'), name = 'Codon Frequency \nin P. inhibens') +
+    labs(x = 'Codon', 
+         y = 'log2(Relative Codon composition)',
+         color = '', 
+         title = "Differential Codon usage between phage and P. inhibens") +
+        geom_hline(yintercept = 0) +
+        theme(axis.text.x = element_text(size = 18, angle = 90), 
+        axis.text.y = element_text(size = 18),
+        axis.title.x.bottom = element_text(size = 18),
+        axis.title.y.left = element_text(size = 18)) + 
+        geom_point(data = temp[complete.cases(temp) ,],
+                   aes(x = codon, y = enrichment + 0.05 * sign(enrichment)),
+                   shape = 8, size = 2) +
+        facet_grid(~amino_acid, scale = "free_x",space = 'free_x')
+
+
+ggsave('../figs/PhageVPhaeobacterCodonCounts.pdf', units = 'in', width = 21.58, height = 5.02)
+
+```
+
+#What Codons does phage encode tRNA for?
+```{}
+#tRNA that are found in phage
+#phage_tRNA <- phage_functions[grepl("tRNA-", phage_functions$Function),] %>% as.data.frame() %>% separate(., col=., into=c('a','b','c'), sep = '-')%>% select(codon='c') %>% semi_join(temp,.)
+
+#tRNA that are unique to phage
+#phage_tRNA <- unique_phage_functions[grepl("tRNA-", unique_phage_functions$Function),] %>% #as.data.frame() %>% separate(., col=., into=c('a','b','c'), sep = '-')%>% #select(codon='c') %>% semi_join(temp,.)
+phage_tRNA <- md18_tRNA %>% semi_join(temp,., by ='codon')
+
+cor <- cor(temp$codon_frequency_pi, temp$codon_frequency_phage) 
+
+ggplot(temp, aes(codon_frequency_pi, codon_frequency_phage)) +
+  geom_point(size = 3, alpha = .5) + scale_x_log10() + scale_y_log10() +
+  geom_abline(slope = 1, linetype = 'dashed', color = 'red') +
+  annotate("text", label = paste("italic(r)==", signif(cor, 3)), parse = TRUE,
+           x = 0.02, y = .15, size = 8) +
+  labs(x="P. inhibens codon frequency", y = 'Phage codon frequency', color = 'phage tRNA genes') +
+  geom_point(data=phage_tRNA,aes(codon_frequency_pi, codon_frequency_phage), color = 'dodgerblue', fill = 'black', size = 3, alpha = .5)+
+  theme(axis.text.x = element_text(size = 18), 
+        axis.text.y = element_text(size = 18),
+        axis.title.x.bottom = element_text(size = 18),
+        axis.title.y.left = element_text(size = 18)) +
+   geom_point(data=NULL, aes(x=.1, y = .01), color = 'dodgerblue', fill = 'black', size = 3, alpha = .5) +
+   annotate("text", label = 'Phage tRNA genes', x = .3, y = .01, size = 6)
+
+ggsave('../figs/PhageVPhaeobacterCodonCounts.png', units = 'in', width = 6, height = 5.02)
+
+
+
+```
+
+#Are phage tRNA genes the most enriched codons?
+```{r}
+
+#at codon level?
+phage_tRNA <- md18_tRNA %>% semi_join(temp,., by ='codon') %>% select(codon, codon_frequency_phage) %>% distinct()
+
+not_phage_tRNA <- md18_tRNA %>% anti_join(temp,., by ='codon') %>% select(codon, codon_frequency_phage) %>% distinct()
+
+t.test(log10(phage_tRNA$codon_frequency_phage), log10(not_phage_tRNA$codon_frequency_phage), alternative = 'greater')
+
+#at AA level, can't really say since all AA are encoded by at  least a single tRNA
+# phage_AA <- md18_tRNA %>% semi_join(temp,., by ='amino_acid') %>% select(amino_acid, enrichment) 
+# 
+# not_phage_AA <- md18_tRNA %>% anti_join(temp,., by ='amino_acid') %>% select(amino_acid, enrichment) %>% distinct()
+# 
+# t.test(log10(phage_AA$encrichment), log10(not_phage_tRNA$codon_frequency_phage), alternative = 'greater')
+
+
+```
+Graph codon usage of tRNA genes
+```{r}
+phage_temp <- phage_tRNA %>% mutate(type = "Phage tRNA") %>% melt()
+
+a<- not_phage_tRNA %>% mutate(type = "No Phage tRNA") %>% melt() %>% rbind(.,phage_temp) %>%
+   ggplot(., aes(type, value)) + geom_boxplot(aes(fill = type), outlier.color = NA, width = .3) +
+    scale_fill_manual(values = c('gray60', 'dodgerblue')) +
+    geom_jitter(size = 2,  alpha = .5) +
+    geom_signif(comparisons = list(c("Phage tRNA", "No Phage tRNA")), 
+                         y_position = c(1.1),
+                         #map_signif_level=TRUE, #Comment out for p-values
+                         test = "wilcox.test", textsize = 6) + 
+  scale_y_continuous(breaks = c(0, 0.25, 0.5, 0.75, 1), limits = c(0,1.25)) + 
+  labs(y = 'Codon usage frequency', x = '') + 
+  theme(axis.text.x = element_text(size = 18), 
+        axis.text.y = element_text(size = 24),
+        axis.title.x.bottom = element_text(size = 24),
+        axis.title.y.left = element_text(size = 24),
+        legend.position = 'none')
+
+```
+
+
+```{}
+#Phage encoded tRNA codons are not significantly higher
+t.test(log10(phage_tRNA$codon_frequency_pi), log10(temp$codon_frequency_pi))
+ggplot(temp, aes(codon_frequency_pi)) + geom_density(bw = .1, fill = 'black', alpha = .5) + geom_density(data=phage_tRNA, aes(codon_frequency_pi), color = 'blue',fill = 'blue', alpha = .5, bw = .1) + scale_x_log10()
+
+```
+
+
+#usage for E. coli
+```{r}
+
+ec_genes <- read.table("../ref/e.coli_FullAnnotations.txt", header = T, fill = NA, sep = '\t') %>%
+    select(feature_id, sequence = 'nucleotide_sequence')
+
+
+temp <- ec_genes %>%
+    mutate(len_seq = nchar(sequence) / 3,
+           round_len_seq = ceiling(len_seq)) %>% 
+    filter(len_seq == round_len_seq) 
+
+codon_stats <- temp$sequence %>%
+    paste(., collapse ="") %>%
+    DNAStringSet() %>%
+    oligonucleotideFrequency(width = 3, step = 3) %>%
+    t() %>% 
+    as.data.frame() %>%
+    mutate(ec_counts = V1, 
+           ec_frequency = V1 / sum(V1)) %>%
+    select(-V1) %>%
+  cbind(., codon_stats)
+
+temp <- codon_stats %>% group_by(amino_acid) %>% 
+    mutate(codon_frequency_phage = phage_counts / sum(phage_counts),
+           codon_frequency_pi = pi_counts / sum(pi_counts),
+           codon_frequency_ec = ec_counts / sum(ec_counts)) %>% 
+    ungroup() %>%
+    select(codon, amino_acid, codon_frequency_pi,codon_frequency_ec, codon_frequency_phage) %>% 
+    distinct() 
+
+```
+
+
+
+#plot pairwise codon frequencies
+```{r}
+#ec vs phage
+phage_tRNA <- md18_tRNA %>% semi_join(temp,., by ='codon')
+
+
+cor <- cor(temp$codon_frequency_ec, temp$codon_frequency_phage)
+
+b<- ggplot(temp, aes(codon_frequency_ec, codon_frequency_phage)) +
+  geom_point(size = 3, alpha = .5) +
+  scale_x_log10(breaks = c(.01, .1, 1), limits = c(.005, 1.1)) + 
+  scale_y_log10(breaks = c(.01, .1, 1), limits = c(.005, 1.1)) +
+
+  geom_abline(slope = 1, linetype = 'dashed', color = 'red') +
+  annotate("text", label = paste("italic(r)==", signif(cor, 3)), parse = TRUE,
+           x = 0.02, y = .15, size = 8) +
+  labs(x=expression(paste(italic("E. coli"), " codon usage frequency")), y = 'Phaeobacter phage MD18\ncodon usage frequency', color = 'phage tRNA genes', title = '', parse = T) +
+  geom_point(data=phage_tRNA,aes(codon_frequency_ec, codon_frequency_phage), color = 'dodgerblue', fill = 'black', size = 3, alpha = .5)+
+  theme(axis.text.x = element_text(size = 24), 
+        axis.text.y = element_text(size = 24),
+        axis.title.x.bottom = element_text(size = 24),
+        axis.title.y.left = element_text(size = 24)) +
+   geom_point(data=NULL, aes(x=.08, y = .005), color = 'dodgerblue', fill = 'black', size = 3, alpha = .5) +
+   annotate("text", label = 'Phage tRNA genes', x = .35, y = .005, size = 6)
+
+
+cor <- cor(temp$codon_frequency_pi, temp$codon_frequency_phage) 
+
+c<- ggplot(temp, aes(codon_frequency_pi, codon_frequency_phage)) +
+  geom_point(size = 3, alpha = .5) + 
+  scale_x_log10(breaks = c(.01, .1, 1), limits = c(.005, 1.1)) + 
+  scale_y_log10(breaks = c(.01, .1, 1), limits = c(.005, 1.1)) +  geom_abline(slope = 1, linetype = 'dashed', color = 'red') +
+  annotate("text", label = paste("italic(r)==", signif(cor, 3)), parse = TRUE,
+           x = 0.02, y = .15, size = 8) +
+  labs(x=expression(paste(italic("P. inhibens"), " codon usage frequency")),
+       y = '', color = 'phage tRNA genes', title = '') +
+  geom_point(data=phage_tRNA,aes(codon_frequency_pi, codon_frequency_phage), color = 'dodgerblue', fill = 'black', size = 3, alpha = .5)+
+  theme(axis.text.x = element_text(size = 24), 
+        axis.text.y = element_text(size = 24),
+        axis.title.x.bottom = element_text(size = 24),
+        axis.title.y.left = element_text(size = 24)) +
+   geom_point(data=NULL, aes(x=.075, y = .005), color = 'dodgerblue', fill = 'black', size = 3, alpha = .5) +
+   annotate("text", label = 'Phage tRNA genes', x = .3, y = .005, size = 6)
+
+
+plot_grid(a,NULL,b,c, rows = 2, labels = c('A', NA, 'B', NA), label_size = 20)
+
+ggsave('../figs/fig2/PhageVBacteriaCodonCounts.pdf', units = 'in', width = 14, height = 12.02)
+
+
+# #ec vs pi
+# cor <- cor(temp$codon_frequency_ec, temp$codon_frequency_pi) 
+# 
+# b<- ggplot(temp, aes(codon_frequency_ec, codon_frequency_pi)) +
+#   geom_point(size = 3, alpha = .5) + scale_x_log10() + scale_y_log10() +
+#   geom_abline(slope = 1, linetype = 'dashed', color = 'red') +
+#   annotate("text", label = paste("italic(r)==", signif(cor, 3)), parse = TRUE,
+#            x = 0.02, y = .15, size = 8) +
+#   labs(x="E. coli codon frequency", y = 'P. inhibens codon frequency', color = 'phage tRNA genes') +
+#   geom_point(data=phage_tRNA,aes(codon_frequency_ec, codon_frequency_pi), color = 'dodgerblue', fill = 'black', size = 3, alpha = .5)+
+#   theme(axis.text.x = element_text(size = 18), 
+#         axis.text.y = element_text(size = 18),
+#         axis.title.x.bottom = element_text(size = 18),
+#         axis.title.y.left = element_text(size = 18)) +
+#    geom_point(data=NULL, aes(x=.1, y = .01), color = 'dodgerblue', fill = 'black', size = 3, alpha = .5) +
+#    annotate("text", label = 'Phage tRNA genes', x = .3, y = .01, size = 6)
+
+#pi vs phage
+
+```
+
+
+
+
+
+
+
+
+
